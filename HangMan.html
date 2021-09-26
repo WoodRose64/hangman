@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title> HangMan </title>
+</head>
+<body>
+   <h1> !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!HangMan <h1>
+   <h4> !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Reload To Start <h5>
+   <h4> !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Rules: <h4>
+   <h4> !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!None <h4>
+   <script>
+   //Creat an array of words
+   
+ var countG = 0; 
+   var words = [
+   "fish", 
+   "hello world",
+   "odd duck","happy happy happy","going to school","coding is cool",
+   "mirror","happy birthday","birding is awesome","mom needs help","who is the best","daddy is the best",
+   "javascript",
+   "milk",
+   "paint",
+   "kill",
+   "flower",
+   "Hockey",
+   "fans",
+   "water",
+   "dolphin",
+   "parrot",
+   "egret",
+   "addled",
+   "zoo",
+   "egg",
+   "fox",
+   "odd",
+   "basketball",
+   "ghost",
+   "zombie",
+   "yellow",
+   "xray",
+   "burrito",
+   "taco",
+   "hairball",
+   "poop",
+   "diaper",
+   "moist",
+   "happy birthday",
+   "two dogs",
+   "hot balloon",
+   "asking mom",
+   "i have been across The U S A",
+   "fetch Dogys",
+   "daddy is awesome just like mommy",
+   "fire",
+   "magic Trick Fun",
+   "the Golden Commpass",
+   "pillows with fuzz inside",
+   "computers are dump and really stupid",
+   "games are really fun but sometimes not fun",
+   "happy holidays are reeeeeeeeeaaaaaaaaalllllllllllllyyyyyyyyyyyyyyy fun"
+   ];
+   //pick a random word
+   var word = words[Math.floor(Math.random() * words.length)];
+   var uniLetters = word.length;
+   
+   // Set up answer array 
+   var answerArray = [];
+   for (var i = 0; i < word.length; i++) {
+      answerArray[i] = "_";
+   }
+   var remainigLetters = word.length;
+   
+   
+   // the game loop
+ while (remainigLetters > 0) {
+   //show the player their progress
+   alert(answerArray.join(" "));
+   
+   //get a guess from the player
+   var guess = prompt("Guess a Letter or press cancel to stop playing");
+   countG++;
+   alert("You have Guessed " + countG + " times")
+   if (guess === null) {
+   
+     //exit the game loop
+     break;
+   } else if (guess.length !== 1) {
+     alert("Please Enter A Single Letter");
+   } else {
+     //Update the game state with the guess.
+      var dLetters = 0; 
+     for (var j = 0; j < word.length; j++) {
+	 
+       if (word[j].toLowerCase() === guess.toLowerCase()) {
+      
+         if (answerArray[j] === "_") {
+		   console.log("Good Guesses!!!!");
+           remainigLetters--;
+		   dLetters++;
+         }
+	     answerArray[j] = word[j];
+       }
+     }
+     if (dLetters > 1) {
+        uniLetters = uniLetters - dLetters + 1;
+	 }	 
+   }
+   //the end of the game loop
+ }
+ 
+ //show the answer and congratulate the player
+ alert(answerArray.join(" "));
+ alert( "Great job! The answer was " + word);
+ countG=countG-uniLetters;
+ alert("You had " + countG  + " bad guesses");
+ </script>
+ </body>
+ </html>
+ 
+    
+     
